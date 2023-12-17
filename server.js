@@ -11,7 +11,7 @@ const PORT = 3001;
 app.use(cors());
 app.use(bodyParser.json());
 
-mongoose.connect('mongodb+srv://techieearthcom:abcd9592@cluster0.kattfck.mongodb.net/', {
+mongoose.connect('mongodb+srv://techieearthcom:abcd9592@cluster0.kattfck.mongodb.net/?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
