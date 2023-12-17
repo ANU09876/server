@@ -33,7 +33,16 @@ const Enrollment = mongoose.model('Enrollment', enrollmentSchema, 'enrollments',
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });
-
+app.get("/get-records", async (req, res) => {
+  try {
+    const records = await Enrollment.find({});
+    console.log("Records:", records);
+    res.json(records);
+  } catch (error) {
+    console.error("Error fetching records:", error);
+    res.status(500).json({ error: "Internal Server Error" });
+  }
+});
 app.post('/create', async (req, res) => {
   console.log('Api started');
   const { name, age, selectedBatch, fees } = req.body;
